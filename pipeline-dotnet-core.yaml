@@ -1,0 +1,46 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: dotnetapp
+  labels:
+    name: dotnetapp
+spec:
+  type: LoadBalancer
+  ports:
+  - name: http
+    port: 80
+    targetPort: 80
+  selector:
+    app: dotnetapp
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dotnetapp
+spec:
+  selector:
+    matchLabels:
+      app: dotnetapp
+  template:
+    metadata:
+      labels:
+        app: dotnetapp
+    spec:
+      containers:
+        - image: griffacr2.azurecr.io/dotnetapp:latest
+          imagePullPolicy: Always
+          name: dotnetapp
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: ".5"
+            limits:
+              memory: "1024Mi"
+              cpu: "2.0"
+          env:
+          ports:
+          - containerPort: 80
+            protocol: TCP
+      restartPolicy: Always        

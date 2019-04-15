@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "{{.Values.deploy.name}}"
+spec:
+  selector:
+    matchLabels:
+      app: dotnetapp
+  template:
+    metadata:
+      labels:
+        app: dotnetapp
+    spec:
+      containers:
+        - image: "griffacr2.azurecr.io/dotnetapp:{{.Values.deploy.imageTag}}"
+          imagePullPolicy: Always
+          name: dotnetapp
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: ".5"
+            limits:
+              memory: "1024Mi"
+              cpu: "2.0"
+          env:
+          ports:
+          - containerPort: {{.Values.deploy.containerPort}}
+            protocol: TCP
+      restartPolicy: Always        

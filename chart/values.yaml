@@ -1,0 +1,9 @@
+# Default values for chart
+
+service:
+  port: 80
+
+deploy:
+  name: dotnetapp
+  imageTag: "latest"
+  containerPort: 80

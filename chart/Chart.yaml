@@ -1,0 +1,7 @@
+name: dotnetapp
+home: https://github.com/MicrosoftDocs/pipelines-dotnet-core-docker
+version: 1.0
+description: dotnet demo app
+maintainers: 
+  - name: stevegriffith
+    email: steve.griffith@microsoft.com
