@@ -12,7 +12,7 @@ spec:
         app: dotnetapp
     spec:
       containers:
-        - image: "griffacr2.azurecr.io/dotnetapp:{{.Values.deploy.imageTag}}"
+        - image: "{{.Values.deploy.repo}}:{{.Values.deploy.imageTag}}"
           imagePullPolicy: Always
           name: dotnetapp
           resources:
