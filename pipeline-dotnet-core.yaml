@@ -29,7 +29,7 @@ spec:
         app: dotnetapp
     spec:
       containers:
-        - image: griffacr2.azurecr.io/dotnetapp:latest
+        - image: <Insert Repo/Image Nam>:latest
           imagePullPolicy: Always
           name: dotnetapp
           resources:
